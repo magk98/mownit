@@ -11,6 +11,7 @@ M1 = 1.0  # mass of pendulum 1 in kg
 M2 = 1.0  # mass of pendulum 2 in kg
 alpha1 = 30
 alpha2 = 30
+color1 = (94, 96, 96)
 
 class InputLabel:
     def __init__(self, x, y, width, height, font, text=''):
@@ -120,7 +121,7 @@ def count(m1, m2, l1, l2, alpha1, alpha2):
 
 def main():
 
-    global M1, M2, L1, L2, alpha1, alpha2
+    global M1, M2, L1, L2, alpha1, alpha2, color1
     x1_temp, y1_temp, x2_temp, y2_temp = count(1, 1, 1.5, 2, 359, 180)
     x1 = [(SCREEN_WIDTH // 2 + x*100) for x in x1_temp]
     y1 = [(SCREEN_HEIGHT // 2 - y*100) for y in y1_temp]
@@ -171,16 +172,16 @@ def main():
                     x2 = [(SCREEN_WIDTH // 2 + x*100) for x in x2_temp]
                     y2 = [(SCREEN_WIDTH // 2 - y*100) for y in y2_temp]
                     box.value = ''
+                    index = 0
         #Drawing white screen and figures
         win.fill((241, 237, 233))
-        circle1 = pygame.draw.circle(win, (5, 5, 5), (int(x1[index]), int(y1[index])), 10, 0)
-        pygame.draw.line(win, (5, 5, 5), [SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2], [circle1.x + 10, circle1.y + 10], 1)
-        circle2 = pygame.draw.circle(win, (5, 5, 5), (int(x2[index]), int(y2[index])), 10, 0)
-        pygame.draw.line(win, (5, 5, 5), [circle1.x + 10, circle1.y + 10], [circle2.x + 10, circle2.y + 10], 1)
+        circle1 = pygame.draw.circle(win, color1, (int(x1[index]), int(y1[index])), 10, 0)
+        pygame.draw.line(win, color1, [SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2], [circle1.x + 10, circle1.y + 10], 1)
+        circle2 = pygame.draw.circle(win, color1, (int(x2[index]), int(y2[index])), 10, 0)
+        pygame.draw.line(win, color1, [circle1.x + 10, circle1.y + 10], [circle2.x + 10, circle2.y + 10], 1)
 
         for box in input_boxes:
             box.draw(win)
-
         pygame.display.update()
 
 
